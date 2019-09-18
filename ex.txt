@@ -1,0 +1,72 @@
+﻿using System;
+namespace Exceptions
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            try
+            {
+                string str;
+                double num1;
+                double num2;
+                char oper;
+                Console.WriteLine("enter 1st number");
+                str = Console.ReadLine();
+                num1 = Convert.ToDouble(str);
+                Console.WriteLine("enter 2nd number");
+                str = Console.ReadLine();
+                num2 = Convert.ToDouble(str);
+                Console.WriteLine("enter operator to perform operation");
+                str = Console.ReadLine();
+                oper = Convert.ToChar(str);
+
+                DivideByZero(num1,oper,num2);
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("divide by zero exception" + e.ToString());
+            }
+            finally
+            {
+                Console.WriteLine("terminating calculator program");
+            }
+
+        }
+        static void DivideByZero(double num1, char oper, double num2)
+        {
+            switch (oper)
+            {
+                case '+':
+                    {
+                        Console.WriteLine(num1 + num2);
+                        break;
+                    }
+                case '-':
+                    {
+                        Console.WriteLine(num1 - num2);
+                        break;
+                    }
+                case '*':
+                    {
+                        Console.WriteLine(num1 * num2);
+                        break;
+                    }
+                case '/':
+                    {
+                        if(num2 == 0)
+                        {
+                            throw new Exception();
+                        }
+                        else
+                        {
+                            Console.WriteLine(num1 / num2);
+                        }
+                        break;
+                    }
+            }
+        }
+    }
+}
